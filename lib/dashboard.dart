@@ -441,135 +441,141 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
       decoration:
           BoxDecoration(color: Theme.of(context).scaffoldBackgroundColor),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            'HashPay',
-            style: TextStyle(
-              fontSize: width * .01 + 18,
-              fontWeight: FontWeight.w800,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            // Text(
+            //   'HashPay',
+            //   style: TextStyle(
+            //     fontSize: width * .01 + 18,
+            //     fontWeight: FontWeight.w800,
+            //   ),
+            // ),
+            SizedBox(
+              width: width * .1,
+              child: Image.asset('assets/images/logo.png'),
             ),
-          ),
-          SizedBox(
-            child: Column(
-              children: <Widget>[
-                NavBtn(
-                  icon: Icon(
-                    CupertinoIcons.home,
+            SizedBox(
+              child: Column(
+                children: <Widget>[
+                  NavBtn(
+                    icon: Icon(
+                      CupertinoIcons.home,
+                      color: isDarkMode
+                          ? AppColors.mainColorLight
+                          : AppColors.mainColorDark,
+                    ),
+                    text: 'Home',
+                    isActive: true,
+                  ),
+                  NavBtn(
+                    icon: Icon(
+                      CupertinoIcons.bag,
+                      color: Theme.of(context).textTheme.bodyMedium!.color,
+                    ),
+                    text: 'Wallet',
+                    isActive: false,
+                  ),
+                  NavBtn(
+                    icon: Icon(
+                      CupertinoIcons.money_dollar_circle,
+                      color: Theme.of(context).textTheme.bodyMedium!.color,
+                    ),
+                    text: 'Deposite & Withdraw',
+                    isActive: false,
+                  ),
+                  NavBtn(
+                    icon: Icon(
+                      Icons.send,
+                      color: Theme.of(context).textTheme.bodyMedium!.color,
+                    ),
+                    text: 'Transfers',
+                    isActive: false,
+                  ),
+                  NavBtn(
+                    icon: Icon(
+                      Icons.phone_android,
+                      color: Theme.of(context).textTheme.bodyMedium!.color,
+                    ),
+                    text: 'Phone Recharge',
+                    isActive: false,
+                  ),
+                  NavBtn(
+                    icon: Icon(
+                      Icons.credit_card_outlined,
+                      color: Theme.of(context).textTheme.bodyMedium!.color,
+                    ),
+                    text: 'My Payment Card',
+                    isActive: false,
+                  ),
+                  NavBtn(
+                    icon: Icon(
+                      Icons.line_axis,
+                      color: Theme.of(context).textTheme.bodyMedium!.color,
+                    ),
+                    text: 'Movements',
+                    isActive: false,
+                  ),
+                  SizedBox(height: height * .02),
+                  Container(
+                    width: double.maxFinite,
+                    height: 5,
                     color: isDarkMode
-                        ? AppColors.mainColorLight
-                        : AppColors.mainColorDark,
+                        ? AppColors.mainBgDarkShade
+                        : AppColors.mainBgLightShade,
                   ),
-                  text: 'Home',
-                  isActive: true,
-                ),
-                NavBtn(
-                  icon: Icon(
-                    CupertinoIcons.bag,
-                    color: Theme.of(context).textTheme.bodyMedium!.color,
+                  SizedBox(height: height * .02),
+                  NavBtn(
+                    icon: Icon(
+                      Icons.people_outline,
+                      color: Theme.of(context).textTheme.bodyMedium!.color,
+                    ),
+                    text: 'Accounts',
+                    isActive: false,
                   ),
-                  text: 'Wallet',
-                  isActive: false,
-                ),
-                NavBtn(
-                  icon: Icon(
-                    CupertinoIcons.money_dollar_circle,
-                    color: Theme.of(context).textTheme.bodyMedium!.color,
+                  NavBtn(
+                    icon: Icon(
+                      CupertinoIcons.settings,
+                      color: Theme.of(context).textTheme.bodyMedium!.color,
+                    ),
+                    text: 'Settings',
+                    isActive: false,
                   ),
-                  text: 'Deposite & Withdraw',
-                  isActive: false,
-                ),
-                NavBtn(
-                  icon: Icon(
-                    Icons.send,
-                    color: Theme.of(context).textTheme.bodyMedium!.color,
+                  NavBtn(
+                    icon: Icon(
+                      CupertinoIcons.chat_bubble,
+                      color: Theme.of(context).textTheme.bodyMedium!.color,
+                    ),
+                    text: 'Chat',
+                    isActive: false,
                   ),
-                  text: 'Transfers',
-                  isActive: false,
-                ),
-                NavBtn(
-                  icon: Icon(
-                    Icons.phone_android,
-                    color: Theme.of(context).textTheme.bodyMedium!.color,
+                ],
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'Dark Mode',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
                   ),
-                  text: 'Phone Recharge',
-                  isActive: false,
                 ),
-                NavBtn(
-                  icon: Icon(
-                    Icons.credit_card_outlined,
-                    color: Theme.of(context).textTheme.bodyMedium!.color,
-                  ),
-                  text: 'My Payment Card',
-                  isActive: false,
-                ),
-                NavBtn(
-                  icon: Icon(
-                    Icons.line_axis,
-                    color: Theme.of(context).textTheme.bodyMedium!.color,
-                  ),
-                  text: 'Movements',
-                  isActive: false,
-                ),
-                SizedBox(height: height * .02),
-                Container(
-                  width: double.maxFinite,
-                  height: 5,
-                  color: isDarkMode
-                      ? AppColors.mainBgDarkShade
-                      : AppColors.mainBgLightShade,
-                ),
-                SizedBox(height: height * .02),
-                NavBtn(
-                  icon: Icon(
-                    Icons.people_outline,
-                    color: Theme.of(context).textTheme.bodyMedium!.color,
-                  ),
-                  text: 'Accounts',
-                  isActive: false,
-                ),
-                NavBtn(
-                  icon: Icon(
-                    CupertinoIcons.settings,
-                    color: Theme.of(context).textTheme.bodyMedium!.color,
-                  ),
-                  text: 'Settings',
-                  isActive: false,
-                ),
-                NavBtn(
-                  icon: Icon(
-                    CupertinoIcons.chat_bubble,
-                    color: Theme.of(context).textTheme.bodyMedium!.color,
-                  ),
-                  text: 'Chat',
-                  isActive: false,
+                Switch(
+                  activeColor: AppColors.primaryColor,
+                  value: isDarkMode,
+                  onChanged: (value) {
+                    ref.read(isDarkModeProvider.notifier).changeTheme(value);
+                  },
                 ),
               ],
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'Dark Mode',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-              Switch(
-                activeColor: AppColors.primaryColor,
-                value: isDarkMode,
-                onChanged: (value) {
-                  ref.read(isDarkModeProvider.notifier).changeTheme(value);
-                },
-              ),
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
