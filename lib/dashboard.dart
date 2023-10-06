@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'colors.dart';
 import 'providers.dart';
@@ -34,6 +35,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     SizedBox(
                       width: double.maxFinite,
@@ -69,355 +71,185 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                       ),
                     ),
                     // End Of top items
-                    Row(
-                      children: <Widget>[
-                        SizedBox(
-                          width: width * .3,
-                          // height: height * .9,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              // First Card item
-                              Container(
-                                width: double.maxFinite,
-                                decoration: BoxDecoration(
-                                  color:
-                                      Theme.of(context).scaffoldBackgroundColor,
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 10,
-                                  horizontal: 25,
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        const Text(
-                                          'Balance',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20,
-                                          ),
-                                        ),
-                                        Row(
-                                          children: <Widget>[
-                                            Container(
-                                              padding: const EdgeInsets.all(10),
-                                              decoration: BoxDecoration(
-                                                border: Border.all(
-                                                  color: isDarkMode
-                                                      ? AppColors
-                                                          .mainBgDarkShade
-                                                      : AppColors
-                                                          .mainBgLightShade,
-                                                  width: 1.5,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                              ),
-                                              child: Icon(
-                                                CupertinoIcons.money_yen,
-                                                color: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyMedium!
-                                                    .color,
-                                              ),
+                    Container(
+                      width: double.maxFinite,
+                      height: height * .9,
+                      alignment: Alignment.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          itemSectionOne(width, height, context, isDarkMode),
+                          SizedBox(width: width * .02),
+                          Expanded(
+                            child: Container(
+                              height: height * .8,
+                              decoration: BoxDecoration(
+                                color:
+                                    Theme.of(context).scaffoldBackgroundColor,
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 20, horizontal: 50),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  SizedBox(
+                                    width: width * .15,
+                                    child: Image.asset(
+                                      'assets/images/credit_card.png',
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  const Text(
+                                    'Transactions',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 24,
+                                    ),
+                                  ),
+                                  FittedBox(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        color: isDarkMode
+                                            ? AppColors.mainBgDarkShade
+                                            : AppColors.mainBgLightShade,
+                                      ),
+                                      padding: const EdgeInsets.all(10),
+                                      child: Row(
+                                        children: <Widget>[
+                                          Container(
+                                            width: width * .1,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(30),
+                                              color: isDarkMode
+                                                  ? AppColors.mainBgLight
+                                                  : AppColors.mainBgDark,
                                             ),
-                                            SizedBox(width: width * .01),
-                                            Container(
-                                              padding: const EdgeInsets.all(10),
-                                              decoration: BoxDecoration(
-                                                color: isDarkMode
-                                                    ? AppColors.mainBgLight
-                                                    : AppColors.mainBgDark,
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                              ),
-                                              child: Icon(
-                                                Icons.currency_exchange,
+                                            alignment: Alignment.center,
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 10),
+                                            child: Text(
+                                              'Send',
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
                                                 color: isDarkMode
                                                     ? AppColors.mainColorLight
                                                     : AppColors.mainColorDark,
                                               ),
                                             ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: height * .02),
-                                    const Text(
-                                      '\$7,610.00',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 24,
+                                          ),
+                                          Container(
+                                            width: width * .1,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(30),
+                                            ),
+                                            alignment: Alignment.center,
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 10),
+                                            child: const Text(
+                                              'Apply For',
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    SizedBox(height: height * .02),
-                                    Row(
-                                      children: <Widget>[
-                                        Container(
-                                          padding: const EdgeInsets.all(10),
-                                          decoration: BoxDecoration(
-                                            color: isDarkMode
-                                                ? AppColors.mainBgDarkShade
-                                                : AppColors.mainBgLightShade,
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: Icon(
-                                            CupertinoIcons.arrow_up_right,
-                                            size: 18,
-                                            color: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium!
-                                                .color,
-                                          ),
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      const Text(
+                                        'Pay Id',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
                                         ),
-                                        SizedBox(width: width * .005),
-                                        const Text(
-                                          '\$2,319.00',
+                                      ),
+                                      SizedBox(height: height * .01),
+                                      Container(
+                                        width: double.maxFinite,
+                                        decoration: BoxDecoration(
+                                          color: isDarkMode
+                                              ? AppColors.mainBgDarkShade
+                                              : AppColors.mainBgLightShade,
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                        ),
+                                        alignment: Alignment.center,
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 10),
+                                        child: const Text(
+                                          '3455-2647-3456-8652-9072-1287',
                                           style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 18,
-                                          ),
-                                        ),
-                                        SizedBox(width: width * .02),
-                                        Container(
-                                          padding: const EdgeInsets.all(10),
-                                          decoration: BoxDecoration(
-                                            color: isDarkMode
-                                                ? AppColors.mainBgDarkShade
-                                                : AppColors.mainBgLightShade,
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: Icon(
-                                            CupertinoIcons.arrow_down_left,
-                                            size: 18,
-                                            color: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium!
-                                                .color,
-                                          ),
-                                        ),
-                                        SizedBox(width: width * .005),
-                                        const Text(
-                                          '-\$919.00',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 18,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: height * .02),
-                                  ],
-                                ),
-                              ),
-                              // First Card Item End
-                              // Second Card Item
-                              Container(
-                                width: double.maxFinite,
-                                decoration: BoxDecoration(
-                                  color:
-                                      Theme.of(context).scaffoldBackgroundColor,
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 10,
-                                  horizontal: 25,
-                                ),
-                                margin:
-                                    const EdgeInsets.symmetric(vertical: 10),
-                                child: Column(
-                                  children: <Widget>[
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        const Text(
-                                          'Information',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
                                             fontSize: 20,
+                                            fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                        Container(
-                                          padding: const EdgeInsets.all(10),
-                                          decoration: BoxDecoration(
-                                            border: Border.all(
-                                              color: isDarkMode
-                                                  ? AppColors.mainBgDarkShade
-                                                  : AppColors.mainBgLightShade,
-                                              width: 1.5,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                          ),
-                                          child: Icon(
-                                            CupertinoIcons.pen,
-                                            color: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium!
-                                                .color,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: height * .02),
-                                  ],
-                                ),
-                              ),
-                              // Second Card Item End
-                              // Third Card Item
-                              Container(
-                                width: double.maxFinite,
-                                decoration: BoxDecoration(
-                                  color:
-                                      Theme.of(context).scaffoldBackgroundColor,
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 10,
-                                  horizontal: 25,
-                                ),
-                                margin:
-                                    const EdgeInsets.symmetric(vertical: 10),
-                                child: Column(
-                                  children: <Widget>[
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        const Text(
-                                          'Security',
+                                      ),
+                                      SizedBox(height: height * .01),
+                                      const Center(
+                                        child: Text(
+                                          'Please enter your Wallet Id',
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 20,
                                           ),
                                         ),
-                                        Icon(
-                                          Icons.more_horiz,
-                                          color: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium!
-                                              .color,
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: height * .02),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            Container(
-                                              padding: const EdgeInsets.all(10),
-                                              decoration: BoxDecoration(
-                                                color: isDarkMode
-                                                    ? AppColors.mainBgLight
-                                                    : AppColors.mainBgDark,
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                              ),
-                                              child: Icon(
-                                                Icons.safety_check_outlined,
-                                                size: 30,
-                                                color: isDarkMode
-                                                    ? AppColors.mainColorLight
-                                                    : AppColors.mainColorDark,
-                                              ),
-                                            ),
-                                            SizedBox(width: width * .01),
-                                            const Text(
-                                              '2F A enabled',
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 18,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Switch(
-                                          value: true,
-                                          onChanged: (value) {},
-                                          activeColor: isDarkMode
-                                              ? AppColors.mainBgLight
-                                              : AppColors.mainBgDark,
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: height * .02),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            Container(
-                                              padding: const EdgeInsets.all(10),
-                                              decoration: BoxDecoration(
-                                                color: isDarkMode
-                                                    ? AppColors.mainBgDarkShade
-                                                    : AppColors
-                                                        .mainBgLightShade,
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                              child: Icon(
-                                                CupertinoIcons.padlock,
-                                                // size: 18,
-                                                color: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyMedium!
-                                                    .color,
-                                              ),
-                                            ),
-                                            SizedBox(width: width * .01),
-                                            const Text(
-                                              'Key',
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 18,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        OutlinedButton(
-                                          onPressed: () {},
-                                          child: Text(
-                                            'Change',
+                                      ),
+                                    ],
+                                  ),
+                                  InkWell(
+                                    mouseCursor:
+                                        MaterialStateMouseCursor.clickable,
+                                    onTap: () {},
+                                    child: Container(
+                                      width: double.maxFinite,
+                                      margin: const EdgeInsets.only(bottom: 10),
+                                      decoration: BoxDecoration(
+                                        color: AppColors.primaryColor,
+                                        borderRadius: BorderRadius.circular(30),
+                                      ),
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 15,
+                                        vertical: 15,
+                                      ),
+                                      child: const Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          Icon(
+                                            CupertinoIcons.paperplane,
+                                            color: AppColors.mainColorDark,
+                                          ),
+                                          SizedBox(width: 10),
+                                          Text(
+                                            'Send',
                                             style: TextStyle(
-                                                color: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyMedium!
-                                                    .color),
-                                          ),
-                                        ),
-                                      ],
+                                              color: AppColors.mainColorDark,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 18,
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
-                                    SizedBox(height: height * .02),
-                                  ],
-                                ),
+                                  )
+                                ],
                               ),
-                              // Third Card Item End
-                            ],
+                            ),
                           ),
-                        ),
-                      ],
+                          SizedBox(width: width * .02),
+                          itemSectionThree(width, height, context),
+                          SizedBox(width: width * .02),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -425,6 +257,497 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Container itemSectionThree(
+      double width, double height, BuildContext context) {
+    return Container(
+      // width: width * .3,
+      height: height * .8,
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+            decoration: BoxDecoration(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                  width: width * .08,
+                  height: width * .08,
+                  child: SvgPicture.asset(
+                    'assets/images/svg_2.svg',
+                  ),
+                ),
+                SizedBox(height: height * .02),
+                const Text(
+                  'Payment Services',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+            decoration: BoxDecoration(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                  width: width * .08,
+                  height: width * .08,
+                  child: SvgPicture.asset(
+                    'assets/images/svg_3.svg',
+                  ),
+                ),
+                SizedBox(height: height * .02),
+                const Text(
+                  'Recharge Cell',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+            decoration: BoxDecoration(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                  width: width * .08,
+                  height: width * .08,
+                  child: SvgPicture.asset(
+                    'assets/images/svg_1.svg',
+                  ),
+                ),
+                SizedBox(height: height * .02),
+                const Text(
+                  'Payment cards',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container itemSectionOne(
+      double width, double height, BuildContext context, bool isDarkMode) {
+    return Container(
+      width: width * .25,
+      height: height * .8,
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          // First Card item
+          Container(
+            width: double.maxFinite,
+            decoration: BoxDecoration(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              borderRadius: BorderRadius.circular(30),
+            ),
+            padding: const EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 25,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    const Text(
+                      'Balance',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: isDarkMode
+                                  ? AppColors.mainBgDarkShade
+                                  : AppColors.mainBgLightShade,
+                              width: 1.5,
+                            ),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Icon(
+                            CupertinoIcons.money_yen,
+                            color:
+                                Theme.of(context).textTheme.bodyMedium!.color,
+                          ),
+                        ),
+                        SizedBox(width: width * .01),
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: isDarkMode
+                                ? AppColors.mainBgLight
+                                : AppColors.mainBgDark,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Icon(
+                            Icons.currency_exchange,
+                            color: isDarkMode
+                                ? AppColors.mainColorLight
+                                : AppColors.mainColorDark,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(height: height * .02),
+                const Text(
+                  '\$7,610.00',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
+                ),
+                SizedBox(height: height * .02),
+                Row(
+                  children: <Widget>[
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: isDarkMode
+                            ? AppColors.mainBgDarkShade
+                            : AppColors.mainBgLightShade,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(
+                        CupertinoIcons.arrow_up_right,
+                        size: 18,
+                        color: Theme.of(context).textTheme.bodyMedium!.color,
+                      ),
+                    ),
+                    SizedBox(width: width * .005),
+                    const Text(
+                      '\$2,319.00',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                    SizedBox(width: width * .02),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: isDarkMode
+                            ? AppColors.mainBgDarkShade
+                            : AppColors.mainBgLightShade,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(
+                        CupertinoIcons.arrow_down_left,
+                        size: 18,
+                        color: Theme.of(context).textTheme.bodyMedium!.color,
+                      ),
+                    ),
+                    SizedBox(width: width * .005),
+                    const Text(
+                      '-\$919.00',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: height * .02),
+              ],
+            ),
+          ),
+          // First Card Item End
+          // Second Card Item
+          Container(
+            width: double.maxFinite,
+            decoration: BoxDecoration(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              borderRadius: BorderRadius.circular(30),
+            ),
+            padding: const EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 25,
+            ),
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    const Text(
+                      'Information',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: isDarkMode
+                              ? AppColors.mainBgDarkShade
+                              : AppColors.mainBgLightShade,
+                          width: 1.5,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Icon(
+                        CupertinoIcons.pen,
+                        color: Theme.of(context).textTheme.bodyMedium!.color,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: height * .02),
+                Row(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        const Icon(
+                          Icons.person,
+                        ),
+                        SizedBox(width: width * .005),
+                        const Text(
+                          'Gender',
+                          style: TextStyle(
+                            // fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: width * .02),
+                    const Text(
+                      'Male',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: height * .02),
+                Row(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        const Icon(
+                          CupertinoIcons.location_fill,
+                        ),
+                        SizedBox(width: width * .005),
+                        const Text(
+                          'Location',
+                          style: TextStyle(
+                            // fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: width * .02),
+                    const Text(
+                      'Nigeria',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: height * .02),
+                Row(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        const Icon(
+                          Icons.wallet_outlined,
+                        ),
+                        SizedBox(width: width * .005),
+                        const Text(
+                          'Wallet ID',
+                          style: TextStyle(
+                            // fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: width * .02),
+                    const Text(
+                      '72g7d9i9u9277890j9d8eu82ui282021',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: height * .02),
+              ],
+            ),
+          ),
+          // Second Card Item End
+          // Third Card Item
+          Container(
+            width: double.maxFinite,
+            decoration: BoxDecoration(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              borderRadius: BorderRadius.circular(30),
+            ),
+            padding: const EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 25,
+            ),
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    const Text(
+                      'Security',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    Icon(
+                      Icons.more_horiz,
+                      color: Theme.of(context).textTheme.bodyMedium!.color,
+                    ),
+                  ],
+                ),
+                SizedBox(height: height * .02),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: isDarkMode
+                                ? AppColors.mainBgLight
+                                : AppColors.mainBgDark,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Icon(
+                            Icons.safety_check_outlined,
+                            size: 30,
+                            color: isDarkMode
+                                ? AppColors.mainColorLight
+                                : AppColors.mainColorDark,
+                          ),
+                        ),
+                        SizedBox(width: width * .01),
+                        const Text(
+                          '2F A enabled',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Switch(
+                      value: true,
+                      onChanged: (value) {},
+                      activeColor: isDarkMode
+                          ? AppColors.mainBgLight
+                          : AppColors.mainBgDark,
+                    ),
+                  ],
+                ),
+                SizedBox(height: height * .02),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: isDarkMode
+                                ? AppColors.mainBgDarkShade
+                                : AppColors.mainBgLightShade,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Icon(
+                            CupertinoIcons.padlock,
+                            // size: 18,
+                            color:
+                                Theme.of(context).textTheme.bodyMedium!.color,
+                          ),
+                        ),
+                        SizedBox(width: width * .01),
+                        const Text(
+                          'Key',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
+                    OutlinedButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Change',
+                        style: TextStyle(
+                          color: Theme.of(context).textTheme.bodyMedium!.color,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: height * .02),
+              ],
+            ),
+          ),
+          // Third Card Item End
+        ],
       ),
     );
   }
