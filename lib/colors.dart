@@ -9,5 +9,5 @@ class AppColors{
   static const Color mainBgLight = Color(0xFFFFFFFF);
   static const Color mainBgLightShade = Color(0xFFf6f7f9);
 
-  static const Color primaryColor = Colors.redAccent;
+  static const Color primaryColor = Color(0xFF6c63ff);
 }
