@@ -17,6 +17,7 @@ class NavBtn extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isDarkMode = ref.watch(isDarkModeProvider);
+    double width = MediaQuery.of(context).size.width;
     return InkWell(
       mouseCursor: MaterialStateMouseCursor.clickable,
       onTap: () {},
@@ -42,13 +43,14 @@ class NavBtn extends ConsumerWidget {
             Text(
               text,
               style: TextStyle(
-                  color: isActive
-                      ? isDarkMode
-                          ? AppColors.mainColorLight
-                          : AppColors.mainColorDark
-                      : Theme.of(context).textTheme.bodyMedium!.color,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 18),
+                color: isActive
+                    ? isDarkMode
+                        ? AppColors.mainColorLight
+                        : AppColors.mainColorDark
+                    : Theme.of(context).textTheme.bodyMedium!.color,
+                fontWeight: FontWeight.w600,
+                fontSize: width * .01 + 1,
+              ),
             )
           ],
         ),
