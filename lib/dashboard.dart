@@ -206,6 +206,150 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                                       ),
                                     ],
                                   ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          const Padding(
+                                            padding: EdgeInsets.only(left:8.0),
+                                            child: Text(
+                                              'Amount',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(height: height * .01),
+                                          Container(
+                                            width: width * .1,
+                                            decoration: BoxDecoration(
+                                              color: isDarkMode
+                                                  ? AppColors.mainBgDarkShade
+                                                  : AppColors.mainBgLightShade,
+                                              borderRadius:
+                                                  BorderRadius.circular(30),
+                                            ),
+                                            alignment: Alignment.center,
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 10,
+                                              horizontal: 20,
+                                            ),
+                                            child: Row(
+                                              children: <Widget>[
+                                                const Text(
+                                                  '\$',
+                                                  style: TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  child: TextField(
+                                                    keyboardType:
+                                                        TextInputType.number,
+                                                    decoration: InputDecoration(
+                                                      hintText: '20',
+                                                      hintStyle: TextStyle(
+                                                        color: Theme.of(context)
+                                                            .textTheme
+                                                            .bodyMedium!
+                                                            .color,
+                                                        fontSize:
+                                                            width * .01 + 2,
+                                                      ),
+                                                      enabledBorder:
+                                                          InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
+                                                    ),
+                                                  ),
+                                                ),
+                                                
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          const Padding(
+                                            padding: EdgeInsets.only(left:8.0),
+                                            child: Text(
+                                              'Reasons',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(height: height * .01),
+                                          Container(
+                                            width: width * .1,
+                                            decoration: BoxDecoration(
+                                              color: isDarkMode
+                                                  ? AppColors.mainBgDarkShade
+                                                  : AppColors.mainBgLightShade,
+                                              borderRadius:
+                                                  BorderRadius.circular(30),
+                                            ),
+                                            alignment: Alignment.center,
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 10,
+                                              horizontal: 20,
+                                            ),
+                                            child: Expanded(
+                                              child: TextField(
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                decoration: InputDecoration(
+                                                  hintText: 'Games',
+                                                  hintStyle: TextStyle(
+                                                    color: Theme.of(context)
+                                                        .textTheme
+                                                        .bodyMedium!
+                                                        .color,
+                                                    fontSize:
+                                                        width * .01 + 2,
+                                                  ),
+                                                  enabledBorder:
+                                                      InputBorder.none,
+                                                  focusedBorder:
+                                                      InputBorder.none,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      Row(
+                                        children: <Widget>[
+                                          Text("Commission: ", style: TextStyle(fontSize: width * .01 + .06, fontWeight: FontWeight.bold,),),
+                                          SizedBox(width: width * .02),
+                                          Text("\$3", style: TextStyle(fontSize: width * .01 + .06, fontWeight: FontWeight.bold,),),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: <Widget>[
+                                          Text("Total: ", style: TextStyle(fontSize: width * .01 + .06, fontWeight: FontWeight.bold,),),
+                                          SizedBox(width: width * .02),
+                                          Text("\$300", style: TextStyle(fontSize: width * .01 + .06, fontWeight: FontWeight.bold,),),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                   InkWell(
                                     mouseCursor:
                                         MaterialStateMouseCursor.clickable,
@@ -222,7 +366,8 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                                         vertical: 15,
                                       ),
                                       child: const Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: <Widget>[
                                           Icon(
                                             CupertinoIcons.paperplane,
